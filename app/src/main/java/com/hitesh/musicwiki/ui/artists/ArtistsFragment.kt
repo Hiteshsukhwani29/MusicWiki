@@ -1,4 +1,4 @@
-package com.hitesh.musicwiki.ui.tracks
+package com.hitesh.musicwiki.ui.artists
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -15,50 +15,52 @@ import com.hitesh.musicwiki.R
 import com.hitesh.musicwiki.adapter.AlbumsAdapter
 import com.hitesh.musicwiki.adapter.ArtistsAdapter
 import com.hitesh.musicwiki.adapter.TagsAdapter
-import com.hitesh.musicwiki.adapter.TracksAdapter
-import com.hitesh.musicwiki.databinding.*
+import com.hitesh.musicwiki.databinding.FragmentAlbumsBinding
+import com.hitesh.musicwiki.databinding.FragmentArtistsBinding
+import com.hitesh.musicwiki.databinding.FragmentDetailedGenreBinding
+import com.hitesh.musicwiki.databinding.FragmentGenreBinding
 import com.hitesh.musicwiki.repository.MusicRepository
 import com.hitesh.musicwiki.ui.detailedgenre.DetailedGenreViewModel
 import com.hitesh.musicwiki.ui.genre.GenreViewModel
 import com.hitesh.musicwiki.ui.genre.GenreViewModelFactory
 import kotlinx.coroutines.launch
 
-class TracksFragment(var tagname: String = "disco") : Fragment() {
+class ArtistsFragment(var tagname: String = "disco") : Fragment() {
 
-    private var _binding: FragmentTracksBinding? = null
+    private var _binding: FragmentArtistsBinding? = null
 
     private val binding get() = _binding!!
 
-    private lateinit var tracksAdapter: TracksAdapter
+    private lateinit var artistsAdapter: ArtistsAdapter
 
-    private lateinit var viewModel: TracksViewModel
+    private lateinit var viewModel: ArtistsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentTracksBinding.inflate(inflater, container, false)
+        _binding = FragmentArtistsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val musicRepository = MusicRepository()
 
-        val viewModelFactory = TracksViewModelFactory(musicRepository)
+        val viewModelFactory = ArtistsViewModelFactory(musicRepository)
 
-        viewModel = ViewModelProvider(this, viewModelFactory)[TracksViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[ArtistsViewModel::class.java]
 
-        tracksAdapter = TracksAdapter()
+        artistsAdapter = ArtistsAdapter()
 
-        binding.rvTracks.apply {
-            adapter = tracksAdapter
+        binding.rvArtists.apply {
+            adapter = artistsAdapter
             layoutManager = GridLayoutManager(activity, 2)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getTopTracks(tagname)
+                viewModel.getTopArtists(tagname)
                 viewModel.response.observe(viewLifecycleOwner) { response ->
                     Log.d("final result search", response.body().toString())
-                    tracksAdapter.differ.submitList(response.body()?.tracks?.track)
+                    artistsAdapter.differ.submitList(response.body()?.topartists?.artist)
                 }
             }
         }

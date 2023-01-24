@@ -1,9 +1,7 @@
 package com.hitesh.musicwiki.repository
 
 import com.hitesh.musicwiki.api.RetrofitInstance
-import com.hitesh.musicwiki.model.Albums
-import com.hitesh.musicwiki.model.TagDetails
-import com.hitesh.musicwiki.model.Tags
+import com.hitesh.musicwiki.model.*
 import retrofit2.Response
 
 class MusicRepository {
@@ -15,5 +13,11 @@ class MusicRepository {
     }
     suspend fun getTopAlbums(tag: String): Response<Albums> {
         return RetrofitInstance.api.getTopAlbums(tag)
+    }
+    suspend fun getTopArtists(tag: String): Response<Artists> {
+        return RetrofitInstance.api.getTopArtists(tag)
+    }
+    suspend fun getTopTracks(tag: String): Response<Tracks> {
+        return RetrofitInstance.api.getTopTracks(tag)
     }
 }

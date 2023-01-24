@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.tracks.TracksFragment">
+    tools:context=".ui.artists.ArtistsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_tracks"
+        android:id="@+id/rv_artists"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="20dp"

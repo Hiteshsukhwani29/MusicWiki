@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.hitesh.musicwiki.ui.albums.AlbumsFragment
-import com.hitesh.musicwiki.ui.genre.GenreFragment
+import com.hitesh.musicwiki.ui.artists.ArtistsFragment
 import com.hitesh.musicwiki.ui.tracks.TracksFragment
 
 class ViewPagerAdapter(fm: FragmentManager, val tag: String) : FragmentPagerAdapter(fm) {
@@ -14,8 +14,9 @@ class ViewPagerAdapter(fm: FragmentManager, val tag: String) : FragmentPagerAdap
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> AlbumsFragment()
-            1 -> TracksFragment()
-            else -> GenreFragment()
+            1 -> ArtistsFragment()
+            2 -> TracksFragment()
+            else -> AlbumsFragment()
         }
     }
 

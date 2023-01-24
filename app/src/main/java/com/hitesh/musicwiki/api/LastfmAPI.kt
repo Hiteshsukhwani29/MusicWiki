@@ -1,8 +1,6 @@
 package com.hitesh.musicwiki.api
 
-import com.hitesh.musicwiki.model.Albums
-import com.hitesh.musicwiki.model.TagDetails
-import com.hitesh.musicwiki.model.Tags
+import com.hitesh.musicwiki.model.*
 import com.hitesh.musicwiki.util.Constants.Companion.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
@@ -33,5 +31,21 @@ interface LastfmAPI {
         @Query("method") method: String = "tag.gettopalbums",
         @Query("format") format: String = "json",
         ): Response<Albums>
+
+    @GET("2.0")
+    suspend fun getTopArtists(
+        @Query("tag") tag: String = "disco",
+        @Query("api_key") apikey: String = API_KEY,
+        @Query("method") method: String = "tag.gettopartists",
+        @Query("format") format: String = "json",
+    ): Response<Artists>
+
+    @GET("2.0")
+    suspend fun getTopTracks(
+        @Query("tag") tag: String = "disco",
+        @Query("api_key") apikey: String = API_KEY,
+        @Query("method") method: String = "tag.gettoptracks",
+        @Query("format") format: String = "json",
+    ): Response<Tracks>
 
 }
