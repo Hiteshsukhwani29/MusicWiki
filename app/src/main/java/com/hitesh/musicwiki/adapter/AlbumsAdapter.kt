@@ -9,19 +9,21 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.hitesh.musicwiki.R
+import com.hitesh.musicwiki.model.Album
+import com.hitesh.musicwiki.model.Albums
 import com.hitesh.musicwiki.model.Tag
 import com.hitesh.musicwiki.ui.genre.GenreFragment
 import com.hitesh.musicwiki.ui.genre.GenreFragmentDirections
 
-class TagsAdapter :
-    RecyclerView.Adapter<TagsAdapter.ViewHolder>() {
+class AlbumsAdapter :
+    RecyclerView.Adapter<AlbumsAdapter.ViewHolder>() {
 
-    private val differCallback = object : DiffUtil.ItemCallback<Tag>() {
-        override fun areItemsTheSame(oldItem: Tag, newItem: Tag): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<Album>() {
+        override fun areItemsTheSame(oldItem: Album, newItem: Album): Boolean {
             return oldItem.name == newItem.name
         }
 
-        override fun areContentsTheSame(oldItem: Tag, newItem: Tag): Boolean {
+        override fun areContentsTheSame(oldItem: Album, newItem: Album): Boolean {
             return oldItem == newItem
         }
     }
@@ -38,7 +40,6 @@ class TagsAdapter :
         val genre = differ.currentList[position]
         holder.genre.text = genre.name
         holder.genre.setOnClickListener {
-            it.findNavController().navigate(GenreFragmentDirections.actionGenreFragmentToDetailedGenre(genre.name))
         }
     }
 

@@ -56,9 +56,9 @@ class GenreFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.getTopTags()
-                viewModel._genreResponse.observe(viewLifecycleOwner) { response ->
+                viewModel.genreResponse.observe(viewLifecycleOwner) { response ->
                     Log.d("final result search", response.body().toString())
-                    genreAdapter.differ.submitList(response.body()?.tags?.tag?.subList(0, 10))
+                    genreAdapter.differ.submitList(response.body()?.tags?.tag?.subList(0, 9))
 
                     binding.expandGenres.setOnClickListener {
                         expanded = !expanded
@@ -69,8 +69,7 @@ class GenreFragment : Fragment() {
                             binding.expandGenres.setImageResource(R.drawable.ic_baseline_keyboard_arrow_up_24)
                             genreAdapter.differ.submitList(
                                 response.body()?.tags?.tag?.subList(
-                                    0,
-                                    10
+                                    0, 9
                                 )
                             )
                         }
