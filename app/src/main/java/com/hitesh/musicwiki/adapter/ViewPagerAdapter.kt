@@ -13,10 +13,10 @@ class ViewPagerAdapter(fm: FragmentManager, val tag: String) : FragmentPagerAdap
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> AlbumsFragment()
-            1 -> ArtistsFragment()
-            2 -> TracksFragment()
-            else -> AlbumsFragment()
+            0 -> AlbumsFragment(tag)
+            1 -> ArtistsFragment(tag)
+            2 -> TracksFragment(tag)
+            else -> AlbumsFragment(tag)
         }
     }
 

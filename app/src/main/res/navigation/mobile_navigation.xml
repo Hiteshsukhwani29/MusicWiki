@@ -25,6 +25,44 @@
         <argument
             android:name="tag"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detailedGenre_to_albumsFragment"
+            app:destination="@+id/albumsFragment" />
+        <action
+            android:id="@+id/action_detailedGenre_to_detailedAlbumFragment2"
+            app:destination="@id/detailedAlbumFragment2" />
+        <action
+            android:id="@+id/action_detailedGenre_to_detailedArtistFragment"
+            app:destination="@id/detailedArtistFragment" />
     </fragment>
     <fragment android:id="@+id/placeholder" />
+    <fragment
+        android:id="@+id/albumsFragment"
+        android:name="com.hitesh.musicwiki.ui.albums.AlbumsFragment"
+        android:label="fragment_albums"
+        tools:layout="@layout/fragment_albums" >
+        <action
+            android:id="@+id/action_albumsFragment_to_detailedAlbumFragment2"
+            app:destination="@+id/detailedAlbumFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailedAlbumFragment2"
+        android:name="com.hitesh.musicwiki.ui.detailedalbum.DetailedAlbumFragment"
+        android:label="fragment_detailed_album"
+        tools:layout="@layout/fragment_detailed_album" >
+        <argument
+            android:name="albumName"
+            app:argType="string" />
+        <argument android:name="artistName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailedArtistFragment"
+        android:name="com.hitesh.musicwiki.ui.detailedartist.DetailedArtistFragment"
+        android:label="fragment_detailed_artist"
+        tools:layout="@layout/fragment_detailed_artist" >
+        <argument
+            android:name="artistName"
+            app:argType="string" />
+    </fragment>
 </navigation>

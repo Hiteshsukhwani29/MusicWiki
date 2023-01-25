@@ -3,6 +3,8 @@ package com.hitesh.musicwiki.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -13,8 +15,10 @@ import com.hitesh.musicwiki.model.Album
 import com.hitesh.musicwiki.model.Albums
 import com.hitesh.musicwiki.model.ArtistX
 import com.hitesh.musicwiki.model.Tag
+import com.hitesh.musicwiki.ui.detailedgenre.DetailedGenreDirections
 import com.hitesh.musicwiki.ui.genre.GenreFragment
 import com.hitesh.musicwiki.ui.genre.GenreFragmentDirections
+import com.squareup.picasso.Picasso
 
 class ArtistsAdapter :
     RecyclerView.Adapter<ArtistsAdapter.ViewHolder>() {
@@ -33,14 +37,18 @@ class ArtistsAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_genre, parent, false)
+            .inflate(R.layout.item_artist, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val genre = differ.currentList[position]
-        holder.genre.text = genre.name
-        holder.genre.setOnClickListener {
+        val artist = differ.currentList[position]
+        if (artist.image[0].text.length > 1) {
+            Picasso.get().load(artist.image[2].text).into(holder.artistImg)
+        }
+        holder.artistName.text = artist.name
+        holder.artistImg.setOnClickListener {
+            it.findNavController().navigate(DetailedGenreDirections.actionDetailedGenreToDetailedArtistFragment(artist.name))
         }
     }
 
@@ -49,6 +57,7 @@ class ArtistsAdapter :
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val genre: MaterialButton = itemView.findViewById(R.id.itemButton)
+        val artistName: TextView = itemView.findViewById(R.id.artist_name)
+        val artistImg: ImageView = itemView.findViewById(R.id.img_artist)
     }
 }

@@ -45,6 +45,10 @@ class DetailedGenre : Fragment() {
 
         viewModel = ViewModelProvider(this, viewModelFactory)[DetailedGenreViewModel::class.java]
 
+        val viewPager = binding.viewPager
+        viewPager.adapter = ViewPagerAdapter(requireFragmentManager(), tag = args.tag)
+        binding.tabs.setupWithViewPager(viewPager)
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.getTagDetails(args.tag)
@@ -57,13 +61,5 @@ class DetailedGenre : Fragment() {
             }
         }
         return root
-    }
-
-    override fun onResume() {
-        super.onResume()
-        val viewPager = binding.viewPager
-        viewPager.adapter = ViewPagerAdapter(requireFragmentManager(), tag = args.tag)
-        binding.tabs.setupWithViewPager(viewPager)
-
     }
 }

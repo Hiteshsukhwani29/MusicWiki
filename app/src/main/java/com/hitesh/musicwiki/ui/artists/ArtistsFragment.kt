@@ -25,7 +25,7 @@ import com.hitesh.musicwiki.ui.genre.GenreViewModel
 import com.hitesh.musicwiki.ui.genre.GenreViewModelFactory
 import kotlinx.coroutines.launch
 
-class ArtistsFragment(var tagname: String = "disco") : Fragment() {
+class ArtistsFragment(var tagname: String) : Fragment() {
 
     private var _binding: FragmentArtistsBinding? = null
 

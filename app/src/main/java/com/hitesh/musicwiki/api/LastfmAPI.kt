@@ -48,4 +48,37 @@ interface LastfmAPI {
         @Query("format") format: String = "json",
     ): Response<Tracks>
 
+    @GET("2.0")
+    suspend fun getAlbumDetails(
+        @Query("album") albumName: String,
+        @Query("artist") artistName: String,
+        @Query("api_key") apikey: String = API_KEY,
+        @Query("method") method: String = "album.getinfo",
+        @Query("format") format: String = "json",
+    ): Response<DetailedAlbum>
+
+    @GET("2.0")
+    suspend fun getArtistDetails(
+        @Query("artist") artistName: String,
+        @Query("api_key") apikey: String = API_KEY,
+        @Query("method") method: String = "artist.getinfo",
+        @Query("format") format: String = "json",
+    ): Response<ArtistDetails>
+
+    @GET("2.0")
+    suspend fun getArtistTopAlbums(
+        @Query("artist") artistName: String,
+        @Query("api_key") apikey: String = API_KEY,
+        @Query("method") method: String = "artist.getTopAlbums",
+        @Query("format") format: String = "json",
+    ): Response<ArtistTopAlbums>
+
+    @GET("2.0")
+    suspend fun getArtistTopTracks(
+        @Query("artist") artistName: String,
+        @Query("api_key") apikey: String = API_KEY,
+        @Query("method") method: String = "artist.getTopTracks",
+        @Query("format") format: String = "json",
+    ): Response<ArtistTopTracks>
+
 }

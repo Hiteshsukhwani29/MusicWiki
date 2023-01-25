@@ -1,35 +1,28 @@
 package com.hitesh.musicwiki.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.hitesh.musicwiki.R
-import com.hitesh.musicwiki.model.Album
-import com.hitesh.musicwiki.model.Albums
-import com.hitesh.musicwiki.model.Tag
-import com.hitesh.musicwiki.ui.albums.AlbumsFragment
-import com.hitesh.musicwiki.ui.albums.AlbumsFragmentDirections
-import com.hitesh.musicwiki.ui.detailedgenre.DetailedGenreDirections
-import com.hitesh.musicwiki.ui.genre.GenreFragment
-import com.hitesh.musicwiki.ui.genre.GenreFragmentDirections
+import com.hitesh.musicwiki.model.*
 import com.squareup.picasso.Picasso
 
-class AlbumsAdapter :
-    RecyclerView.Adapter<AlbumsAdapter.ViewHolder>() {
+class AlbumsChipAdapter :
+    RecyclerView.Adapter<AlbumsChipAdapter.ViewHolder>() {
 
-    private val differCallback = object : DiffUtil.ItemCallback<Album>() {
-        override fun areItemsTheSame(oldItem: Album, newItem: Album): Boolean {
-            return oldItem.name == newItem.name
+    private val differCallback = object : DiffUtil.ItemCallback<AlbumXX>() {
+        override fun areItemsTheSame(oldItem: AlbumXX, newItem: AlbumXX): Boolean {
+            return oldItem.url == newItem.url
         }
 
-        override fun areContentsTheSame(oldItem: Album, newItem: Album): Boolean {
+        override fun areContentsTheSame(oldItem: AlbumXX, newItem: AlbumXX): Boolean {
             return oldItem == newItem
         }
     }
@@ -38,7 +31,7 @@ class AlbumsAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_album, parent, false)
+            .inflate(R.layout.chip_album, parent, false)
         return ViewHolder(view)
     }
 
@@ -49,9 +42,6 @@ class AlbumsAdapter :
         }
         holder.albumName.text = album.name
         holder.artistName.text = album.artist.name
-        holder.albumImg.setOnClickListener {
-            it.findNavController().navigate(DetailedGenreDirections.actionDetailedGenreToDetailedAlbumFragment2(album.name,album.artist.name))
-        }
     }
 
     override fun getItemCount(): Int {
