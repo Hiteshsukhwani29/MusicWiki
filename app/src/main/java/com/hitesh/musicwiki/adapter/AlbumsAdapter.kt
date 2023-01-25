@@ -59,8 +59,8 @@ class AlbumsAdapter :
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val albumName = itemView.findViewById<TextView>(R.id.album_name)
-        val albumImg = itemView.findViewById<ImageView>(R.id.img_album)
-        val artistName = itemView.findViewById<TextView>(R.id.album_artist)
+        val albumName = itemView.findViewById<TextView>(R.id.item_name)
+        val albumImg = itemView.findViewById<ImageView>(R.id.img_item)
+        val artistName = itemView.findViewById<TextView>(R.id.item_artist_name)
     }
 }

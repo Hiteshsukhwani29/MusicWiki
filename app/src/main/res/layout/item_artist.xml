@@ -15,6 +15,7 @@
             android:id="@+id/img_artist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/artist_image"
             android:foreground="#66000000"
             android:scaleType="centerCrop"
             android:src="@color/theme_color" />
@@ -30,7 +31,6 @@
                 android:id="@+id/artist_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lorem Ipsum"
                 android:textAlignment="center"
                 android:textColor="@color/white" />
 

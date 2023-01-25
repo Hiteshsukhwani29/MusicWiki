@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,6 +17,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_margin="20dp"
+            android:contentDescription="@string/icon_back"
             android:src="@drawable/ic_baseline_keyboard_arrow_left_24_white" />
 
         <TextView
@@ -27,7 +27,6 @@
             android:layout_marginTop="50dp"
             android:fontFamily="@font/lato_black"
             android:paddingHorizontal="20dp"
-            android:text="Cold Play"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="34sp" />
@@ -37,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
+            android:baselineAligned="false"
             android:gravity="bottom"
             android:orientation="horizontal"
             android:weightSum="1">
@@ -52,7 +52,6 @@
                     android:id="@+id/playcount_stats"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="385K"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
@@ -61,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="Playcount"
+                    android:text="@string/playcount"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
@@ -79,7 +78,6 @@
                     android:id="@+id/followers_stats"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="385K"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
@@ -88,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:text="Followers"
+                    android:text="@string/followers"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
@@ -104,8 +102,7 @@
         android:id="@+id/rv_detailed_artist_tags"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:overScrollMode="never" />
 
     <androidx.core.widget.NestedScrollView
@@ -132,7 +129,7 @@
                 android:fontFamily="@font/lato_bold"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="5dp"
-                android:text="Top Tracks"
+                android:text="@string/top_tracks"
                 android:textSize="14sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -149,7 +146,7 @@
                 android:fontFamily="@font/lato_bold"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="5dp"
-                android:text="Top Albums"
+                android:text="@string/top_albums"
                 android:textSize="14sp" />
 
             <androidx.recyclerview.widget.RecyclerView

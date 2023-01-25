@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">MusicWiki</string>
+    <string name="artist_image">Artist image</string>
+    <string name="item_image">item image</string>
+    <string name="logo">logo</string>
+    <string name="welcome">Welcome!</string>
+    <string name="choose_a_genre_to_start_with">Choose a genre to start with</string>
+    <string name="expand_genre">expand genre</string>
+    <string name="icon_back">icon_back</string>
+    <string name="playcount">Playcount</string>
+    <string name="followers">Followers</string>
+    <string name="top_tracks">Top Tracks</string>
+    <string name="top_albums">Top Albums</string>
 </resources>
