@@ -15,11 +15,7 @@ class ArtistsViewModel(private val musicRepository: MusicRepository) : ViewModel
         get() = _response
 
     suspend fun getTopArtists(tag: String) {
-        _response?.postValue(musicRepository.getTopArtists(tag))
-    }
-
-    init {
-//        getTopTags()
+        _response.postValue(musicRepository.getTopArtists(tag))
     }
 
 }

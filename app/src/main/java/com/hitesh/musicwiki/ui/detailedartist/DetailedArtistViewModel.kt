@@ -21,19 +21,15 @@ class DetailedArtistViewModel(private val musicRepository: MusicRepository) : Vi
         get() = _topTracks
 
     suspend fun getArtistDetails(artistName: String) {
-        _response?.postValue(musicRepository.getArtistDetails(artistName))
+        _response.postValue(musicRepository.getArtistDetails(artistName))
     }
 
     suspend fun getArtistTopAlbums(artistName: String) {
-        _topAlbums?.postValue(musicRepository.getArtistTopAlbums(artistName))
+        _topAlbums.postValue(musicRepository.getArtistTopAlbums(artistName))
     }
 
     suspend fun getArtistTopTracks(artistName: String) {
-        _topTracks?.postValue(musicRepository.getArtistTopTracks(artistName))
-    }
-
-    init {
-//        getTopTags()
+        _topTracks.postValue(musicRepository.getArtistTopTracks(artistName))
     }
 
 }

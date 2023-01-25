@@ -1,9 +1,5 @@
 package com.hitesh.musicwiki.ui.detailedartist
 
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.icu.number.NumberFormatter.with
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,10 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hitesh.musicwiki.adapter.AlbumsChipAdapter
 import com.hitesh.musicwiki.adapter.TagsChipAdapter
 import com.hitesh.musicwiki.adapter.TracksChipAdapter
-import com.hitesh.musicwiki.databinding.*
+import com.hitesh.musicwiki.databinding.FragmentDetailedArtistBinding
 import com.hitesh.musicwiki.repository.MusicRepository
-import com.squareup.picasso.Picasso
-import com.squareup.picasso.Picasso.LoadedFrom
 import kotlinx.coroutines.launch
 
 
@@ -43,7 +37,7 @@ class DetailedArtistFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDetailedArtistBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -80,41 +74,34 @@ class DetailedArtistFragment : Fragment() {
                 viewModel.getArtistTopAlbums(args.artistName)
                 viewModel.getArtistTopTracks(args.artistName)
                 viewModel.response.observe(viewLifecycleOwner) { response ->
-                    if (response.body()?.artist?.stats?.playcount!!.toInt().div(1000000) > 1) {
-                        binding.playcountStats.text =
-                            response.body()?.artist?.stats?.playcount!!.toInt().div(1000000)
-                                .toString() + "M"
-                    } else if (response.body()?.artist?.stats?.playcount?.toInt()
-                            ?.div(1000)!! > 1
-                    ) {
-                        binding.playcountStats.text =
-                            response.body()?.artist?.stats?.playcount!!.toInt().div(1000)
-                                .toString() + "M"
-                    } else {
-                        binding.playcountStats.text = response.body()?.artist?.stats?.listeners
-                    }
-                    if (response.body()?.artist?.stats?.listeners!!.toInt().div(1000000) > 1) {
-                        binding.followersStats.text =
+
+                    binding.playcountStats.text =
+                        if (response.body()?.artist?.stats?.playcount!!.toInt()
+                                .div(1000000) > 1
+                        ) response.body()?.artist?.stats?.playcount!!.toInt().div(1000000)
+                            .toString() + "M" else if (response.body()?.artist?.stats?.playcount?.toInt()
+                                ?.div(1000)!! > 1
+                        ) response.body()?.artist?.stats?.playcount!!.toInt().div(1000)
+                            .toString() + "M" else response.body()?.artist?.stats?.listeners
+
+                    binding.followersStats.text =
+                        if (response.body()?.artist?.stats?.listeners!!.toInt().div(1000000) > 1)
                             response.body()?.artist?.stats?.listeners!!.toInt().div(1000000)
-                                .toString() + "M"
-                    } else if (response.body()?.artist?.stats?.listeners?.toInt()
-                            ?.div(1000)!! > 1
-                    ) {
-                        binding.followersStats.text =
+                                .toString() + "M" else if (response.body()?.artist?.stats?.listeners?.toInt()
+                                ?.div(1000)!! > 1
+                        )
                             response.body()?.artist?.stats?.listeners!!.toInt().div(1000)
                                 .toString() + "M"
-                    } else {
-                        binding.followersStats.text = response.body()?.artist?.stats?.listeners
-                    }
+                        else
+                            response.body()?.artist?.stats?.listeners
+
                     binding.artistBio.text = response.body()?.artist?.bio?.summary
                     tagsAdapter.differ.submitList(response.body()?.artist?.tags?.tag)
                 }
                 viewModel.topAlbums.observe(viewLifecycleOwner) { response ->
-                    Log.d("df", response.body().toString())
                     albumsAdapter.differ.submitList(response.body()?.topalbums?.album)
                 }
                 viewModel.topTracks.observe(viewLifecycleOwner) { response ->
-                    Log.d("df", response.body()?.toptracks?.track.toString())
                     tracksAdapter.differ.submitList(response.body()?.toptracks?.track)
                 }
             }

@@ -30,7 +30,7 @@ interface LastfmAPI {
         @Query("api_key") apikey: String = API_KEY,
         @Query("method") method: String = "tag.gettopalbums",
         @Query("format") format: String = "json",
-        ): Response<Albums>
+    ): Response<Albums>
 
     @GET("2.0")
     suspend fun getTopArtists(

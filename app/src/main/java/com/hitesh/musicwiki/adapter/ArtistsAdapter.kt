@@ -9,15 +9,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
 import com.hitesh.musicwiki.R
-import com.hitesh.musicwiki.model.Album
-import com.hitesh.musicwiki.model.Albums
 import com.hitesh.musicwiki.model.ArtistX
-import com.hitesh.musicwiki.model.Tag
 import com.hitesh.musicwiki.ui.detailedgenre.DetailedGenreDirections
-import com.hitesh.musicwiki.ui.genre.GenreFragment
-import com.hitesh.musicwiki.ui.genre.GenreFragmentDirections
 import com.squareup.picasso.Picasso
 
 class ArtistsAdapter :
@@ -48,7 +42,8 @@ class ArtistsAdapter :
         }
         holder.artistName.text = artist.name
         holder.artistImg.setOnClickListener {
-            it.findNavController().navigate(DetailedGenreDirections.actionDetailedGenreToDetailedArtistFragment(artist.name))
+            it.findNavController()
+                .navigate(DetailedGenreDirections.actionDetailedGenreToDetailedArtistFragment(artist.name))
         }
     }
 

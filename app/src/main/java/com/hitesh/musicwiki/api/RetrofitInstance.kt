@@ -16,7 +16,7 @@ class RetrofitInstance {
                 .build()
         }
 
-        val api by lazy {
+        val api: LastfmAPI by lazy {
             retrofit.create(LastfmAPI::class.java)
         }
 

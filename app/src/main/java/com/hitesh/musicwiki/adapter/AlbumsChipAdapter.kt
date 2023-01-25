@@ -1,6 +1,5 @@
 package com.hitesh.musicwiki.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
 import com.hitesh.musicwiki.R
-import com.hitesh.musicwiki.model.*
+import com.hitesh.musicwiki.model.AlbumXX
 import com.squareup.picasso.Picasso
 
 class AlbumsChipAdapter :
@@ -49,8 +47,8 @@ class AlbumsChipAdapter :
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val albumName = itemView.findViewById<TextView>(R.id.album_name)
-        val albumImg = itemView.findViewById<ImageView>(R.id.img_album)
-        val artistName = itemView.findViewById<TextView>(R.id.album_artist)
+        val albumName: TextView = itemView.findViewById(R.id.album_name)
+        val albumImg: ImageView = itemView.findViewById(R.id.img_album)
+        val artistName: TextView = itemView.findViewById(R.id.album_artist)
     }
 }

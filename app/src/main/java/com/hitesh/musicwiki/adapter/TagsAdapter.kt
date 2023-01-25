@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.hitesh.musicwiki.R
 import com.hitesh.musicwiki.model.Tag
-import com.hitesh.musicwiki.ui.genre.GenreFragment
 import com.hitesh.musicwiki.ui.genre.GenreFragmentDirections
 
 class TagsAdapter :
@@ -35,10 +34,11 @@ class TagsAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val genre = differ.currentList[position]
-        holder.genre.text = genre.name
-        holder.genre.setOnClickListener {
-            it.findNavController().navigate(GenreFragmentDirections.actionGenreFragmentToDetailedGenre(genre.name))
+        val tag = differ.currentList[position]
+        holder.tag.text = tag.name
+        holder.tag.setOnClickListener {
+            it.findNavController()
+                .navigate(GenreFragmentDirections.actionGenreFragmentToDetailedGenre(tag.name))
         }
     }
 
@@ -47,6 +47,6 @@ class TagsAdapter :
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val genre: MaterialButton = itemView.findViewById(R.id.itemButton)
+        val tag: MaterialButton = itemView.findViewById(R.id.itemButton)
     }
 }

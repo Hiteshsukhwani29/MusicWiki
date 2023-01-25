@@ -8,9 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
 import com.hitesh.musicwiki.R
-import com.hitesh.musicwiki.model.*
+import com.hitesh.musicwiki.model.TrackXX
 import com.squareup.picasso.Picasso
 
 class TracksChipAdapter :
@@ -48,8 +47,8 @@ class TracksChipAdapter :
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val trackName = itemView.findViewById<TextView>(R.id.album_name)
-        val trackImg = itemView.findViewById<ImageView>(R.id.img_album)
-        val artistName = itemView.findViewById<TextView>(R.id.album_artist)
+        val trackName: TextView = itemView.findViewById(R.id.album_name)
+        val trackImg: ImageView = itemView.findViewById(R.id.img_album)
+        val artistName: TextView = itemView.findViewById(R.id.album_artist)
     }
 }

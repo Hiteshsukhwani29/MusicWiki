@@ -1,29 +1,22 @@
 package com.hitesh.musicwiki.ui.albums
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
-import com.hitesh.musicwiki.R
 import com.hitesh.musicwiki.adapter.AlbumsAdapter
-import com.hitesh.musicwiki.adapter.TagsAdapter
 import com.hitesh.musicwiki.databinding.FragmentAlbumsBinding
-import com.hitesh.musicwiki.databinding.FragmentDetailedGenreBinding
-import com.hitesh.musicwiki.databinding.FragmentGenreBinding
 import com.hitesh.musicwiki.repository.MusicRepository
-import com.hitesh.musicwiki.ui.detailedgenre.DetailedGenreViewModel
-import com.hitesh.musicwiki.ui.genre.GenreViewModel
-import com.hitesh.musicwiki.ui.genre.GenreViewModelFactory
 import kotlinx.coroutines.launch
 
-class AlbumsFragment(var tagname: String) : Fragment() {
+class AlbumsFragment(private var tagname: String) : Fragment() {
 
     private var _binding: FragmentAlbumsBinding? = null
 
@@ -36,7 +29,7 @@ class AlbumsFragment(var tagname: String) : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAlbumsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -57,7 +50,6 @@ class AlbumsFragment(var tagname: String) : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.getTopAlbums(tagname)
                 viewModel.response.observe(viewLifecycleOwner) { response ->
-                    Log.d("final result search", response.body().toString())
                     albumsAdapter.differ.submitList(response.body()?.albums?.album?.subList(0, 9))
                 }
             }

@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hitesh.musicwiki.model.Albums
-import com.hitesh.musicwiki.model.TagDetails
 import com.hitesh.musicwiki.repository.MusicRepository
 import retrofit2.Response
 
@@ -14,11 +13,7 @@ class AlbumsViewModel(private val musicRepository: MusicRepository) : ViewModel(
         get() = _response
 
     suspend fun getTopAlbums(tag: String) {
-        _response?.postValue(musicRepository.getTopAlbums(tag))
-    }
-
-    init {
-//        getTopTags()
+        _response.postValue(musicRepository.getTopAlbums(tag))
     }
 
 }

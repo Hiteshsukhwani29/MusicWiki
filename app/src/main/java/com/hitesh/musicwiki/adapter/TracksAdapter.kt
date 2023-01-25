@@ -5,15 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
 import com.hitesh.musicwiki.R
-import com.hitesh.musicwiki.model.*
-import com.hitesh.musicwiki.ui.genre.GenreFragment
-import com.hitesh.musicwiki.ui.genre.GenreFragmentDirections
+import com.hitesh.musicwiki.model.Track
 import com.squareup.picasso.Picasso
 
 class TracksAdapter :
@@ -51,8 +47,8 @@ class TracksAdapter :
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val trackName = itemView.findViewById<TextView>(R.id.item_name)
-        val trackImg = itemView.findViewById<ImageView>(R.id.img_item)
-        val artistName = itemView.findViewById<TextView>(R.id.item_artist_name)
+        val trackName: TextView = itemView.findViewById(R.id.item_name)
+        val trackImg: ImageView = itemView.findViewById(R.id.img_item)
+        val artistName: TextView = itemView.findViewById(R.id.item_artist_name)
     }
 }

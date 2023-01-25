@@ -1,12 +1,9 @@
 package com.hitesh.musicwiki.ui.detailedalbum
 
-import android.icu.number.NumberFormatter.with
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -15,12 +12,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hitesh.musicwiki.adapter.TagsChipAdapter
-import com.hitesh.musicwiki.databinding.*
+import com.hitesh.musicwiki.databinding.FragmentDetailedAlbumBinding
 import com.hitesh.musicwiki.repository.MusicRepository
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class DetailedAlbumFragment : Fragment() {
 
@@ -37,7 +31,7 @@ class DetailedAlbumFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDetailedAlbumBinding.inflate(inflater, container, false)
         val root: View = binding.root
 

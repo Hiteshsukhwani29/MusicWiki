@@ -32,10 +32,8 @@ class TagsChipAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val genre = differ.currentList[position]
-        holder.genre.text = genre.name
-        holder.genre.setOnClickListener {
-        }
+        val tag = differ.currentList[position]
+        holder.tag.text = tag.name
     }
 
     override fun getItemCount(): Int {
@@ -43,6 +41,6 @@ class TagsChipAdapter :
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val genre: MaterialButton = itemView.findViewById(R.id.itemButton)
+        val tag: MaterialButton = itemView.findViewById(R.id.itemButton)
     }
 }

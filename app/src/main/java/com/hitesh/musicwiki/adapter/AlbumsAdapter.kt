@@ -9,16 +9,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
 import com.hitesh.musicwiki.R
 import com.hitesh.musicwiki.model.Album
-import com.hitesh.musicwiki.model.Albums
-import com.hitesh.musicwiki.model.Tag
-import com.hitesh.musicwiki.ui.albums.AlbumsFragment
-import com.hitesh.musicwiki.ui.albums.AlbumsFragmentDirections
 import com.hitesh.musicwiki.ui.detailedgenre.DetailedGenreDirections
-import com.hitesh.musicwiki.ui.genre.GenreFragment
-import com.hitesh.musicwiki.ui.genre.GenreFragmentDirections
 import com.squareup.picasso.Picasso
 
 class AlbumsAdapter :
@@ -50,7 +43,12 @@ class AlbumsAdapter :
         holder.albumName.text = album.name
         holder.artistName.text = album.artist.name
         holder.albumImg.setOnClickListener {
-            it.findNavController().navigate(DetailedGenreDirections.actionDetailedGenreToDetailedAlbumFragment2(album.name,album.artist.name))
+            it.findNavController().navigate(
+                DetailedGenreDirections.actionDetailedGenreToDetailedAlbumFragment2(
+                    album.name,
+                    album.artist.name
+                )
+            )
         }
     }
 
@@ -59,8 +57,8 @@ class AlbumsAdapter :
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val albumName = itemView.findViewById<TextView>(R.id.item_name)
-        val albumImg = itemView.findViewById<ImageView>(R.id.img_item)
-        val artistName = itemView.findViewById<TextView>(R.id.item_artist_name)
+        val albumName: TextView = itemView.findViewById(R.id.item_name)
+        val albumImg: ImageView = itemView.findViewById(R.id.img_item)
+        val artistName: TextView = itemView.findViewById(R.id.item_artist_name)
     }
 }

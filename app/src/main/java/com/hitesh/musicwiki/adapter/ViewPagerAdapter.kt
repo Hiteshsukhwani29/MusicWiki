@@ -9,7 +9,7 @@ import com.hitesh.musicwiki.ui.tracks.TracksFragment
 
 class ViewPagerAdapter(fm: FragmentManager, val tag: String) : FragmentPagerAdapter(fm) {
 
-    private val COUNT = 3
+    private val count = 3
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
@@ -21,10 +21,10 @@ class ViewPagerAdapter(fm: FragmentManager, val tag: String) : FragmentPagerAdap
     }
 
     override fun getCount(): Int {
-        return COUNT
+        return count
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
+    override fun getPageTitle(position: Int): CharSequence {
         return when (position) {
             0 -> "Albums"
             1 -> "Artists"

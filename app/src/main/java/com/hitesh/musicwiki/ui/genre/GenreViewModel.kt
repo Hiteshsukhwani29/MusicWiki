@@ -13,11 +13,7 @@ class GenreViewModel(private val musicRepository: MusicRepository) : ViewModel()
         get() = _genreResponse
 
     suspend fun getTopTags() {
-        _genreResponse?.postValue(musicRepository.getTopTags())
-    }
-
-    init {
-//        getTopTags()
+        _genreResponse.postValue(musicRepository.getTopTags())
     }
 
 }
